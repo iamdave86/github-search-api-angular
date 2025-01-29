@@ -5,13 +5,13 @@
       <mat-card-subtitle class="repository-search-list__item-description">{{ item.description }}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="repository-search-list__item-content">
       <p>Forks count: {{ item.forks_count }}</p>
       <p>Stars count: {{ item.stargazers_count }}</p>
     </mat-card-content>
 
     <mat-card-actions class="repository-search-list__item-actions">
-      <a mat-stroked-button [href]="item.html_url" target="_blank"><mat-icon>open_in_new</mat-icon> Open Repository</a>
+      <a mat-stroked-button [href]="item.html_url" target="_blank"><mat-icon>open_in_new</mat-icon> Go To Repository</a>
     </mat-card-actions>
   </mat-card>
 </div>
