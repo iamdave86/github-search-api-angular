@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EMPTY, map, Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,8 +29,8 @@ import { GetRepositoriesByNameResponseItem } from '@features/repository-search/i
   ],
 })
 export class RepositorySearchComponent {
-  public form: FormGroup;
-  public isLoading$: Observable<boolean>;
+  public readonly form: FormGroup;
+  public readonly isLoading$: Observable<boolean>;
   public repositorySearchListItems$: Observable<GetRepositoriesByNameResponseItem[]> = EMPTY;
 
   constructor(private githubApiService: GithubApiService, private formBuilder: FormBuilder) {
