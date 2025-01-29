@@ -10,7 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SubHeaderComponent } from '@shared/components/sub-header/sub-header.component';
 import { GithubApiService } from '@shared/services/github-api/github-api.service';
 import { RepositorySearchListComponent } from '../repository-search-list/repository-search-list.component';
-import { GetRepositoriesByNameResponseItem } from '@features/repository-search/interfaces/repository.interface';
+import { GetRepositoriesByNameResponseItem } from '@shared/interfaces/repository.interface';
 
 @Component({
   selector: 'app-repository-search',

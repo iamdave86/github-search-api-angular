@@ -7,7 +7,7 @@ import {
   GetRepositoriesByNameResponseItem,
   GetRepositoryIssuesResponse,
   GetRepositoryIssuesResponseItem,
-} from '@features/repository-search/interfaces/repository.interface';
+} from '@shared/interfaces/repository.interface';
 
 export const ITEMS_PER_PAGE = 50;
 

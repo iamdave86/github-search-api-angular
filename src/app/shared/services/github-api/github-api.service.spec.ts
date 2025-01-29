@@ -3,7 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 
 import { GithubApiService, ITEMS_PER_PAGE } from './github-api.service';
-import { GetRepositoriesByNameResponseItem } from '@features/repository-search/interfaces/repository.interface';
+import { GetRepositoriesByNameResponseItem } from '@shared/interfaces/repository.interface';
 
 describe('GithubApiService', () => {
   let service: GithubApiService;

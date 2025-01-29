@@ -6,7 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SubHeaderComponent } from '@shared/components/sub-header/sub-header.component';
 import { GithubApiService } from '@shared/services/github-api/github-api.service';
 import { ActivatedRoute } from '@angular/router';
-import { GetRepositoryIssuesResponseItem } from '@features/repository-search/interfaces/repository.interface';
+import { GetRepositoryIssuesResponseItem } from '@shared/interfaces/repository.interface';
 import { RepositoryIssuesListComponent } from '../repository-issues-list/repository-issues-list.component';
 
 @Component({
