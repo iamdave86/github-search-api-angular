@@ -20,4 +20,8 @@ export const routes: Routes = [
         c => c.RepositoryIssuesComponent,
       ),
   },
+  {
+    path: '**',
+    redirectTo: '/repository/search',
+  },
 ];
