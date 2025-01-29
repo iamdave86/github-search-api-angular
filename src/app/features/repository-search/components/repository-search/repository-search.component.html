@@ -10,12 +10,14 @@
       autocomplete="off"
       required
       placeholder="Enter repository name..."
+      [readonly]="(isLoading$ | async) || false"
     />
     <mat-icon aria-hidden="true" matSuffix>search</mat-icon>
     <mat-error *ngIf="!form.controls['search'].value">Required</mat-error>
   </mat-form-field>
 
   <div class="repository-search-form__footer">
-    <button mat-flat-button (click)="search()" [disabled]="form.invalid">Search</button>
+    <button mat-flat-button (click)="search()" [disabled]="form.invalid || (isLoading$ | async)">Search</button>
+    <mat-spinner *ngIf="isLoading$ | async" diameter="25"></mat-spinner>
   </div>
 </form>
