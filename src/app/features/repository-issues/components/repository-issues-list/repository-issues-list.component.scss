@@ -1,0 +1,23 @@
+.repository-issues-list {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  padding-bottom: 20px;
+
+  &__item-title {
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item-actions {
+    margin-top: 30px;
+    padding: 0 16px 16px;
+    gap: 10px;
+
+    button {
+      padding: 0 18px;
+    }
+  }
+}

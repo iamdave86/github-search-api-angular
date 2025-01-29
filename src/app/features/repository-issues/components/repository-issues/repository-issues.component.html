@@ -1,0 +1,11 @@
+<app-sub-header title="{{ owner }}/{{ repo }} repository issues" />
+
+<mat-spinner *ngIf="isLoading$ | async" diameter="100"></mat-spinner>
+
+<p *ngIf="error$ | async as error">{{ error }}</p>
+
+<div *ngIf="repositoryIssues$ | async as repositoryIssues">
+  <p *ngIf="repositoryIssues?.length === 0">No issues.</p>
+
+  <app-repository-issues-list [repositoryIssues]="repositoryIssues" />
+</div>

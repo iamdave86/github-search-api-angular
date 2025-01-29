@@ -5,6 +5,8 @@ import { BehaviorSubject, finalize, map, Observable } from 'rxjs';
 import {
   GetRepositoriesByNameResponse,
   GetRepositoriesByNameResponseItem,
+  GetRepositoryIssuesResponse,
+  GetRepositoryIssuesResponseItem,
 } from '@features/repository-search/interfaces/repository.interface';
 
 export const ITEMS_PER_PAGE = 50;
@@ -23,6 +25,12 @@ export class GithubApiService {
     const url = `https://api.github.com/search/repositories?q=${name}&per_page=${ITEMS_PER_PAGE}`;
 
     return this.callApi<GetRepositoriesByNameResponse>(url).pipe(map(response => response.items ?? []));
+  }
+
+  public getRepositoryIssues(owner: string, repo: string): Observable<GetRepositoryIssuesResponseItem[]> {
+    const url = `https://api.github.com/repos/${owner}/${repo}/issues?&per_page=${ITEMS_PER_PAGE}`;
+
+    return this.callApi<GetRepositoryIssuesResponse>(url);
   }
 
   private callApi<T>(url: string) {

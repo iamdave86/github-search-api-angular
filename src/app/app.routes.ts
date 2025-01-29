@@ -13,4 +13,11 @@ export const routes: Routes = [
         c => c.RepositorySearchComponent,
       ),
   },
+  {
+    path: 'repository/:owner/:repo/issues',
+    loadComponent: () =>
+      import('@features/repository-issues/components/repository-issues/repository-issues.component').then(
+        c => c.RepositoryIssuesComponent,
+      ),
+  },
 ];
