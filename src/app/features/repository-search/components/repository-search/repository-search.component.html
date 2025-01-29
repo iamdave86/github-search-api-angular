@@ -1,0 +1,21 @@
+<app-sub-header title="You can use this search form for searching among GitHub repositories." />
+
+<form [formGroup]="form" class="repository-search-form" autocomplete="off">
+  <mat-form-field class="repository-search-form__field" appearance="outline">
+    <mat-label>Search repository</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="search"
+      autocomplete="off"
+      required
+      placeholder="Enter repository name..."
+    />
+    <mat-icon aria-hidden="true" matSuffix>search</mat-icon>
+    <mat-error *ngIf="!form.controls['search'].value">Required</mat-error>
+  </mat-form-field>
+
+  <div class="repository-search-form__footer">
+    <button mat-flat-button (click)="search()" [disabled]="form.invalid">Search</button>
+  </div>
+</form>
