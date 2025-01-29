@@ -22,7 +22,7 @@ export class GithubApiService {
   public getRepositoriesByName(name: string): Observable<GetRepositoriesByNameResponseItem[]> {
     const url = `https://api.github.com/search/repositories?q=${name}&per_page=${ITEMS_PER_PAGE}`;
 
-    return this.callApi<GetRepositoriesByNameResponse>(url).pipe(map(response => response.items));
+    return this.callApi<GetRepositoriesByNameResponse>(url).pipe(map(response => response.items ?? []));
   }
 
   private callApi<T>(url: string) {

@@ -21,3 +21,5 @@
     <mat-spinner *ngIf="isLoading$ | async" diameter="25"></mat-spinner>
   </div>
 </form>
+
+<app-repository-search-list [repositoryList]="(repositorySearchListItems$ | async) ?? []" />

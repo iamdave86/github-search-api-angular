@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { EMPTY, map, Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SubHeaderComponent } from '@shared/components/sub-header/sub-header.component';
 import { GithubApiService } from '@shared/services/github-api/github-api.service';
+import { RepositorySearchListComponent } from '../repository-search-list/repository-search-list.component';
+import { GetRepositoriesByNameResponseItem } from '@features/repository-search/interfaces/repository.interface';
 
 @Component({
   selector: 'app-repository-search',
@@ -23,11 +25,13 @@ import { GithubApiService } from '@shared/services/github-api/github-api.service
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    RepositorySearchListComponent,
   ],
 })
 export class RepositorySearchComponent {
   public form: FormGroup;
   public isLoading$: Observable<boolean>;
+  public repositorySearchListItems$: Observable<GetRepositoriesByNameResponseItem[]> = EMPTY;
 
   constructor(private githubApiService: GithubApiService, private formBuilder: FormBuilder) {
     this.isLoading$ = this.githubApiService.isLoading;
@@ -37,7 +41,7 @@ export class RepositorySearchComponent {
   public search() {
     if (this.form.valid) {
       const { search } = this.form.value;
-      this.githubApiService.getRepositoriesByName(search).subscribe(console.log);
+      this.repositorySearchListItems$ = this.githubApiService.getRepositoriesByName(search);
     }
   }
 
