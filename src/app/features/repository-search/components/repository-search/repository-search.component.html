@@ -22,4 +22,8 @@
   </div>
 </form>
 
-<app-repository-search-list [repositoryList]="(repositorySearchListItems$ | async) ?? []" />
+<div *ngIf="repositorySearchListItems$ | async as repositoryList">
+  <p *ngIf="repositoryList?.length === 0">No result.</p>
+
+  <app-repository-search-list [repositoryList]="repositoryList" />
+</div>
