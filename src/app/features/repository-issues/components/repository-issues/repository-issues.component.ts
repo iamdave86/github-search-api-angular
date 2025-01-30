@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BehaviorSubject, catchError, EMPTY, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, Observable, of, Subscription } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SubHeaderComponent } from '@shared/components/sub-header/sub-header.component';
@@ -16,6 +16,8 @@ import { RepositoryIssuesListComponent } from '../repository-issues-list/reposit
   imports: [CommonModule, SubHeaderComponent, MatProgressSpinnerModule, RepositoryIssuesListComponent],
 })
 export class RepositoryIssuesComponent {
+  private subscriptions: Subscription = new Subscription();
+
   public owner: string = '';
   public repo: string = '';
   public readonly isLoading$: Observable<boolean>;
@@ -25,12 +27,18 @@ export class RepositoryIssuesComponent {
   constructor(private githubApiService: GithubApiService, private route: ActivatedRoute) {
     this.isLoading$ = this.githubApiService.isLoading;
 
-    this.route.paramMap.subscribe(params => {
-      this.owner = params.get('owner')!;
-      this.repo = params.get('repo')!;
+    this.subscriptions.add(
+      this.route.paramMap.subscribe(params => {
+        this.owner = params.get('owner')!;
+        this.repo = params.get('repo')!;
 
-      this.fetchIssues();
-    });
+        this.fetchIssues();
+      }),
+    );
+  }
+
+  public ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   private fetchIssues() {
