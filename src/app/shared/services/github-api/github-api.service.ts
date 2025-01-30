@@ -7,6 +7,7 @@ import {
   GetRepositoriesByNameResponseItem,
   GetRepositoryIssuesResponse,
   GetRepositoryIssuesResponseItem,
+  GetRepositoryResponse,
 } from '@shared/interfaces/repository.interface';
 
 export const ITEMS_PER_PAGE = 50;
@@ -31,6 +32,12 @@ export class GithubApiService {
     const url = `https://api.github.com/repos/${owner}/${repo}/issues?&per_page=${ITEMS_PER_PAGE}`;
 
     return this.callApi<GetRepositoryIssuesResponse>(url);
+  }
+
+  public getRepository(owner: string, repo: string): Observable<GetRepositoryResponse> {
+    const url = `https://api.github.com/repos/${owner}/${repo}`;
+
+    return this.callApi<GetRepositoryResponse>(url);
   }
 
   private callApi<T>(url: string) {

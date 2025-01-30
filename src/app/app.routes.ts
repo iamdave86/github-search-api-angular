@@ -21,6 +21,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'repository/:owner/:repo/chart',
+    loadComponent: () =>
+      import('@features/repository-chart/components/repository-chart/repository-chart.component').then(
+        c => c.RepositoryChartComponent,
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/repository/search',
   },

@@ -20,6 +20,9 @@
         <mat-icon>bug_report</mat-icon>
         Issues
       </button>
+      <button mat-stroked-button target="_blank" routerLink="/repository/{{ item.owner.login }}/{{ item.name }}/chart">
+        <mat-icon>bar_chart</mat-icon> Chart
+      </button>
       <a mat-stroked-button [href]="item.html_url" target="_blank"
         ><mat-icon>open_in_new</mat-icon> Go to the Repository</a
       >

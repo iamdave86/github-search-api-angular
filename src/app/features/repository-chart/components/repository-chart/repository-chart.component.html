@@ -1,0 +1,9 @@
+<app-sub-header title="{{ owner }}/{{ repo }} repository chart" />
+
+<mat-spinner *ngIf="isLoading$ | async" diameter="100"></mat-spinner>
+
+<p *ngIf="error$ | async as error">{{ error }}</p>
+
+<div *ngIf="barChartData$ | async as barChartData" class="chart-container">
+  <app-chart [data]="barChartData" [showLegend]="false" />
+</div>

@@ -214,3 +214,5 @@ export interface GetRepositoryIssuesResponseItem {
 }
 
 export type GetRepositoryIssuesResponse = GetRepositoryIssuesResponseItem[];
+
+export type GetRepositoryResponse = GetRepositoriesByNameResponseItem;
